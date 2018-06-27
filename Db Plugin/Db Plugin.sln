@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbExample", "DbExample\DbExample.csproj", "{684005A3-98DE-43CD-A6F2-D111DAC3D821}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Db_Plugin", "DbExample\Db_Plugin.csproj", "{684005A3-98DE-43CD-A6F2-D111DAC3D821}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
