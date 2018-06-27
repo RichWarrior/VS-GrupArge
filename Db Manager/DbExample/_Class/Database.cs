@@ -2,6 +2,7 @@
 using DbExample.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +16,50 @@ namespace DbExample._Class
         private SqlConnection con = new SqlConnection("Data Source=LAPTOP;Initial Catalog=Sistem;User Id=sa;Password=123");
         private SqlCommand cmd;
         private SqlParameter parameter;
+        private SqlDataAdapter adapter;
+        private SqlDataReader reader=null;
+        private DataTable dt;
+
+        public List<T> veriCek<T>()
+        {
+            T result = default(T);
+            var x  = typeof(T);
+            string query = "SELECT * FROM " + x.Name;
+            List<T> list = new List<T>();
+
+            IList<PropertyInfo> properties = new List<PropertyInfo>(x.GetProperties());
+
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand(query, con);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var y = (T)Activator.CreateInstance(typeof(T));
+                    foreach (PropertyInfo item in properties)
+                    {
+                        item.SetValue(y, reader[item.Name], null);
+                    }
+                    list.Add(y);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }finally
+            {
+                if(con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+            return list;
+
+        }
+
+
         public void veriEkle(object data)
         {
             string table_name = data.GetType().Name;
@@ -25,9 +70,13 @@ namespace DbExample._Class
             cmd = new SqlCommand();
             foreach (PropertyInfo item in prop)
             {
-                query += item.Name.ToString() + ",";
-                subQuery += "@" + item.Name+ ",";
-                parameter = cmd.Parameters.AddWithValue('@'+item.Name,item.GetValue(data,null));
+                
+                if(item.Name != "id")
+                {
+                    query += item.Name.ToString() + ",";
+                    subQuery += "@" + item.Name + ",";
+                    parameter = cmd.Parameters.AddWithValue('@' + item.Name, item.GetValue(data, null));
+                }
             }
             query = query.TrimEnd(',');
             subQuery = subQuery.TrimEnd(',');

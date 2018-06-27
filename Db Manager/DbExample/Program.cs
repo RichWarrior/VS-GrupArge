@@ -15,11 +15,8 @@ namespace DbExample
 
             Database dB = new Database();
             Users user = new Users();
-            user.name = "Faruk";
-            user.surname = "Şahin";
-            dB.veriEkle(user);
-
-
+            Dersler ders = new Dersler();
+            dB.veriCek<Users>();
             Console.Read();
         }
     }

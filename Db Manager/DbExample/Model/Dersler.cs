@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace DbExample.Model
 {
-    public class Users
+    public class Dersler
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
+        public string kod { get; set; }
+        public string ad { get; set; }
     }
 }
