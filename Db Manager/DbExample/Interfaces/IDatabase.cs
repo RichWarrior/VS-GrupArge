@@ -9,6 +9,12 @@ namespace DbExample.Interfaces
 {
     public interface IDatabase
     {
-        void veriEkle(object data);
+        //Senkron
+        bool writeData(object data);
+        List<T> getData<T>();
+
+        //Asenkron
+        Task<bool> writeDataAsync(object data);
+        Task<List<T>> getDataAsync<T>();
     }
 }

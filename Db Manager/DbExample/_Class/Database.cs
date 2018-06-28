@@ -13,17 +13,17 @@ namespace DbExample._Class
 {
     public class Database : IDatabase
     {
+        #region Variables
         private SqlConnection con = new SqlConnection("Data Source=LAPTOP;Initial Catalog=Sistem;User Id=sa;Password=123");
         private SqlCommand cmd;
         private SqlParameter parameter;
-        private SqlDataAdapter adapter;
         private SqlDataReader reader=null;
-        private DataTable dt;
+        #endregion
 
-        public List<T> veriCek<T>()
+        public List<T> getData<T>()
         {
             T result = default(T);
-            var x  = typeof(T);
+            var x = typeof(T);
             string query = "SELECT * FROM " + x.Name;
             List<T> list = new List<T>();
 
@@ -39,28 +39,32 @@ namespace DbExample._Class
                     var y = (T)Activator.CreateInstance(typeof(T));
                     foreach (PropertyInfo item in properties)
                     {
-                        item.SetValue(y, reader[item.Name], null);
+                        item.SetValue(y, reader[item.Name] , null);
                     }
                     list.Add(y);
                 }
-
+                reader.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }finally
+            }
+            finally
             {
-                if(con.State == ConnectionState.Open)
+                if (con.State == ConnectionState.Open)
                 {
                     con.Close();
                 }
             }
             return list;
-
         }
 
+        public Task<List<T>> getDataAsync<T>()
+        {
+            throw new NotImplementedException();
+        }
 
-        public void veriEkle(object data)
+        public bool writeData(object data)
         {
             string table_name = data.GetType().Name;
             IList<PropertyInfo> prop = new List<PropertyInfo>(data.GetType().GetProperties());
@@ -70,8 +74,8 @@ namespace DbExample._Class
             cmd = new SqlCommand();
             foreach (PropertyInfo item in prop)
             {
-                
-                if(item.Name != "id")
+
+                if (item.Name != "id")
                 {
                     query += item.Name.ToString() + ",";
                     subQuery += "@" + item.Name + ",";
@@ -82,7 +86,7 @@ namespace DbExample._Class
             subQuery = subQuery.TrimEnd(',');
             query += ")";
             subQuery += ")";
-      
+
             try
             {
                 con.Open();
@@ -90,18 +94,25 @@ namespace DbExample._Class
                 cmd.CommandText = query;
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
-                Console.Write("Başarılı");
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }finally
+                return false;
+            }
+            finally
             {
-                if(con.State == System.Data.ConnectionState.Open)
+                if (con.State == System.Data.ConnectionState.Open)
                 {
                     con.Close();
                 }
             }
+        }
+
+        public Task<bool> writeDataAsync(object data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

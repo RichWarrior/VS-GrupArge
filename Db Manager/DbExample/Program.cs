@@ -3,6 +3,7 @@ using DbExample.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,7 @@ namespace DbExample
     {
         static void Main(string[] args)
         {
-
             Database dB = new Database();
-            Users user = new Users();
-            Dersler ders = new Dersler();
-            dB.veriCek<Users>();
             Console.Read();
         }
     }
