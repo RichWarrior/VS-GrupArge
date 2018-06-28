@@ -14,7 +14,7 @@ namespace DbExample.Interfaces
         List<T> getData<T>();
 
         //Asenkron
-        Task<bool> writeDataAsync(object data);
+        Task<Boolean> writeDataAsync(object data);
         Task<List<T>> getDataAsync<T>();
     }
 }
