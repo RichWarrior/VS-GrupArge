@@ -51,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncHelper\_AsyncHelper.cs" />
     <Compile Include="Interfaces\IDatabase.cs" />
+    <Compile Include="Model\Birth.cs" />
     <Compile Include="Model\Dersler.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />

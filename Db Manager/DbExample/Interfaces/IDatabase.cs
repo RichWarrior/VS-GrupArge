@@ -16,5 +16,8 @@ namespace DbExample.Interfaces
         //Asenkron
         Task<Boolean> writeDataAsync(object data);
         Task<List<T>> getDataAsync<T>();
+
+        //Veri Okuma
+        void readData<T>();
     }
 }

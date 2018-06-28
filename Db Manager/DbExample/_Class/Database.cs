@@ -14,10 +14,10 @@ namespace DbExample._Class
     public class Database : IDatabase
     {
         #region Variables
-        private SqlConnection con = new SqlConnection("Data Source=LAPTOP;Initial Catalog=Sistem;User Id=sa;Password=123");
+        string connectionString = "Data Source=LAPTOP;Initial Catalog=Sistem;User Id=sa;Password=123;Max Pool Size=32767;";
+        private SqlConnection con = new SqlConnection("Data Source=LAPTOP;Initial Catalog=Sistem;User Id=sa;Password=123;Max Pool Size=32767;");
         private SqlCommand cmd;
         private SqlParameter parameter;
-        private SqlDataReader reader=null;
         #endregion
 
         public List<T> getData<T>()
@@ -33,13 +33,22 @@ namespace DbExample._Class
             {
                 con.Open();
                 cmd = new SqlCommand(query, con);
+                SqlDataReader reader;
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     var y = (T)Activator.CreateInstance(typeof(T));
                     foreach (PropertyInfo item in properties)
                     {
-                        item.SetValue(y, reader[item.Name] , null);
+                        Type type = reader[item.Name].GetType();
+                        if (type == typeof(DBNull))
+                        {
+                            item.SetValue(y, null, null);
+                        }
+                        else
+                        {
+                            item.SetValue(y, reader[item.Name], null);
+                        }
                     }
                     list.Add(y);
                 }
@@ -68,17 +77,34 @@ namespace DbExample._Class
             IList<PropertyInfo> props = new List<PropertyInfo>(x.GetProperties());
             try
             {
-                await con.OpenAsync();
+                SqlDataReader reader = null;
+                //con = new SqlConnection(connectionString);
+                if (con.State == ConnectionState.Closed)
+                {
+                    await con.OpenAsync();
+                }
                 cmd = new SqlCommand(query,con);
-                reader = await cmd.ExecuteReaderAsync();
-                while (reader.Read())
+                reader =await  cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
                 {
                     var y = (T)Activator.CreateInstance(typeof(T));
                     foreach (PropertyInfo item in props)
                     {
-                        item.SetValue(y, reader[item.Name], null);
+                        Type type = reader[item.Name].GetType();
+                        if (type == typeof(DBNull))
+                        {
+                            item.SetValue(y, null, null);
+                        }
+                        else
+                        {
+                            item.SetValue(y, reader[item.Name], null);
+                        }
                     }
                     myList.Add(y);
+                }
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
                 }
                 return myList;
             }
@@ -87,15 +113,6 @@ namespace DbExample._Class
                 Console.WriteLine(ex.Message);
                 return myList;
             }
-            finally
-            {
-                if(con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
-
-
         }
 
         public bool writeData(object data)
@@ -186,6 +203,20 @@ namespace DbExample._Class
                 }
             }
 
+        }
+
+        public void readData<T>()
+        {
+            T t = default(T);
+            var x = typeof(T);
+            foreach (var item in this.getData<T>())
+            {
+                IList<PropertyInfo> props = new List<PropertyInfo>(item.GetType().GetProperties());
+                foreach (PropertyInfo subİtem in props)
+                {
+                    Console.WriteLine(subİtem.GetValue(item, null));
+                }
+            }
         }
     }
 }
