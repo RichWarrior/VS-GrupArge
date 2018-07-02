@@ -27,7 +27,6 @@ namespace StoredProcedure1._Class
             using (cmd = new SqlCommand())
             {
                 cmd.Connection = con;
-                //cmd.CommandText = query;
                 IList<PropertyInfo> props = new List<PropertyInfo>(obj.GetType().GetProperties());
                 foreach (PropertyInfo item in props)
                 {
@@ -57,7 +56,6 @@ namespace StoredProcedure1._Class
                     {
                         con.Open();
                         cmd.CommandText = query;
-                        cmd.Connection = con;
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Başarılı");
                     }
