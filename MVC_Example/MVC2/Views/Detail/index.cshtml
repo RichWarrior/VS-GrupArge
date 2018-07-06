@@ -1,0 +1,35 @@
+﻿@model  MVC2.ViewModel.DetailViewModel
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Stored Procedure</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table">
+	@using (Html.BeginForm("Index", "Detail", FormMethod.Post))
+	{
+		@Html.DropDownListFor(m => m.id, Model.categoryList, new { @class = "form-control", style = "max-width:100%", rows = "10" })
+		<input type="submit" value="Listele" />
+	}
+</div>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+@foreach (var item in Model.detailList) {
+    <tr>
+        <td>
+			<h3>@item.content</h3>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id= item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id= item.id })
+        </td>
+    </tr>
+}
+
+</table>

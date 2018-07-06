@@ -1,0 +1,29 @@
+﻿@model MVC2.Models.Detail
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Stored Procedure</h4>
+
+<div>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.content)
+			@Html.DisplayNameFor(model => model.f_key)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.content)
+			@Html.DisplayFor(model => model.f_key)
+		</dd>
+
+	</dl>
+</div>
+
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>
