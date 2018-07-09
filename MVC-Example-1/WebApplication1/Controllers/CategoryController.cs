@@ -31,11 +31,6 @@ namespace WebApplication1.Controllers
                 Text = "İzmir",
                 Value = "3"
             });
-            //viewModel.subCategoryList.Add(new SelectListItem
-            //{
-            //    Text = "Kağıthane",
-            //    Value = "1"
-            //});
             return View(viewModel);
         }
 
