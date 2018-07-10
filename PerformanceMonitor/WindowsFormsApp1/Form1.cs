@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             timer = new Timer();
-            timer.Interval = 5000;
+            timer.Interval = 2500;
             timer.Start();
             timer.Tick += Timer_Tick;
             this.FormClosed += Form1_FormClosed;
@@ -78,9 +78,10 @@ namespace WindowsFormsApp1
 
                     //LOGLAMA
                     sw = new StreamWriter(logPath+"/"+DateTime.Now.ToShortDateString()+".txt",true);
-                    sw.WriteLine("TOTAL CPU USAGE:%"+(int)performanceCounter1.NextValue());
+                    sw.WriteLine("["+DateTime.Now+"]");
+                    sw.WriteLine("TOTAL CPU USAGE:%"+(int)progressBar1.Value);
                     sw.WriteLine(processName+" CPU USAGE:%"+value);
-                    sw.WriteLine(processName+" RAM USAGE:"+ (((int)process_ram / (int)1024) / 1024).ToString() + "MB");
+                    sw.WriteLine(processName+" "+label2.Text);
                     sw.Flush();
                     sw.Close();
                 }
