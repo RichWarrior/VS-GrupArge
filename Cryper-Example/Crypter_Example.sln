@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MD5_Crypter", "md5_crypter\MD5_Crypter.csproj", "{0ACE91DE-F060-4165-8575-FD12D3E6968C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHA1_Crypter", "SHA1_Crypter\SHA1_Crypter.csproj", "{D6388B19-F431-4460-BBC7-9D1A0F851205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHA256_Crypter", "SHA256_Crypter\SHA256_Crypter.csproj", "{07D7A7C9-80C6-4BA2-A07B-614C9F741192}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ACE91DE-F060-4165-8575-FD12D3E6968C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACE91DE-F060-4165-8575-FD12D3E6968C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACE91DE-F060-4165-8575-FD12D3E6968C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACE91DE-F060-4165-8575-FD12D3E6968C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6388B19-F431-4460-BBC7-9D1A0F851205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6388B19-F431-4460-BBC7-9D1A0F851205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6388B19-F431-4460-BBC7-9D1A0F851205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6388B19-F431-4460-BBC7-9D1A0F851205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D7A7C9-80C6-4BA2-A07B-614C9F741192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D7A7C9-80C6-4BA2-A07B-614C9F741192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D7A7C9-80C6-4BA2-A07B-614C9F741192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D7A7C9-80C6-4BA2-A07B-614C9F741192}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8B5B0FF-AB50-4672-AC26-1F7902FC21F0}
+	EndGlobalSection
+EndGlobal
