@@ -23,9 +23,9 @@ namespace Project1.Controller
             return true;
         }
 
-        public bool Sil(Meslek id)
+        public bool Sil(int id)
         {
-            meslek.List.Remove(id);
+            meslek.List.RemoveAt(id);
             return true;
         }
     }

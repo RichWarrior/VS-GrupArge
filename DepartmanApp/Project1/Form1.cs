@@ -120,9 +120,9 @@ namespace Project1
             if (listView3.SelectedItems.Count>0)
             {
                 var index = listView3.SelectedItems[0].Index;
-                meslekController.Sil(new Meslek { kod=listView3.Items[index].SubItems[0].ToString(),meslek=listView3.Items[index].SubItems[1].ToString() });
-                listView3.Items.RemoveAt(index);
+                meslekController.Sil(index);
                 ComboBoxFill();
+                listView3.Items.RemoveAt(index);
             }
         }
     }
