@@ -1,16 +1,10 @@
 ﻿using Project1.Controller;
 using Project1.Model;
-using Project1.ViewModel;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project1
@@ -49,7 +43,11 @@ namespace Project1
             IList<PropertyInfo> props = new List<PropertyInfo>(obj.GetType().GetProperties());
             foreach (PropertyInfo item in props)
             {
-                l.Columns.Add(item.Name.ToUpper(),l.Width/props.Count);
+                l.Columns.Add(item.Name.Replace("_"," ").ToUpper(),l.Width/props.Count);
+            }
+            for (int i = 0; i < l.Columns.Count; i++)
+            {
+                l.Columns[i].Width = -2;
             }
         }
         private void ListViewFill(object obj,ListView l)
@@ -87,11 +85,18 @@ namespace Project1
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            var meslek_id = meslekController.Listele().Where(x => x.meslek == comboBox1.Text).Select(x => x.kod).Single();
-            Personeller personel = new Personeller() { Ad = textBox1.Text, Soyad = textBox2.Text, Meslek=meslek_id.ToString(), Departman = comboBox2.Text };
-            personelController.Ekle(personel);
-            personel.Meslek = meslekController.Listele().Where(x => x.kod == meslek_id).Select(x => x.meslek).Single();
-            ListViewFill(personel,listView1);
+            try
+            {
+                var meslek_id = meslekController.Listele().Where(x => x.meslek == comboBox1.Text).Select(x => x.kod).Single();
+                Personeller personel = new Personeller() { Ad = textBox1.Text, Soyad = textBox2.Text, Meslek = meslek_id.ToString(), Departman = comboBox2.Text, Yas = (int)numericUpDown1.Value, Brut_Maas = Convert.ToInt32(textBox4.Text), Kesinti = Convert.ToInt32(textBox6.Text), Net_Maas = Convert.ToInt32(textBox4.Text) - Convert.ToInt32(textBox6.Text) };
+                personelController.Ekle(personel);
+                personel.Meslek = meslekController.Listele().Where(x => x.kod == meslek_id).Select(x => x.meslek).Single();
+                ListViewFill(personel, listView1);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         private void button3_Click(object sender, EventArgs e)
         {
