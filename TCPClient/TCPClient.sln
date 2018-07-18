@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPClient", "TCPClient\TCPClient.csproj", "{D8BB044E-D804-491E-8968-D29E01C49D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPServer", "TCPServer\TCPServer.csproj", "{931710C4-4BEC-441C-9271-0A190F5EBDD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFile", "LogFile\LogFile.csproj", "{E30EBB2C-3DAF-4BF8-8FF6-4F942E4478C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8BB044E-D804-491E-8968-D29E01C49D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BB044E-D804-491E-8968-D29E01C49D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8BB044E-D804-491E-8968-D29E01C49D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BB044E-D804-491E-8968-D29E01C49D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931710C4-4BEC-441C-9271-0A190F5EBDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931710C4-4BEC-441C-9271-0A190F5EBDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931710C4-4BEC-441C-9271-0A190F5EBDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931710C4-4BEC-441C-9271-0A190F5EBDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E30EBB2C-3DAF-4BF8-8FF6-4F942E4478C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E30EBB2C-3DAF-4BF8-8FF6-4F942E4478C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E30EBB2C-3DAF-4BF8-8FF6-4F942E4478C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E30EBB2C-3DAF-4BF8-8FF6-4F942E4478C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EFCBC65-53BC-4C25-96F5-0BFA668193EB}
+	EndGlobalSection
+EndGlobal
