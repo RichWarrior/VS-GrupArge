@@ -30,7 +30,7 @@ namespace LogicLayer.DLL
                 var expense_id = item.expense_id;
                 var departman_id = item.department_id;
                 dbContext.Expense.Remove(dbContext.Expense.FirstOrDefault(x => x.id == expense_id));
-                dbContext.Department_Expense.Remove(dbContext.Department_Expense.FirstOrDefault(x=>x.department_id == departman_id));
+                dbContext.Department_Expense.Remove(dbContext.Department_Expense.FirstOrDefault(x => x.department_id == departman_id));
             }
             dbContext.Department.Remove(dbContext.Department.FirstOrDefault(x=>x.id == index));
             dbContext.SaveChanges();

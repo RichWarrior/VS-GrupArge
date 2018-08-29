@@ -29,5 +29,6 @@ namespace LogicLayer.Entities
         public virtual DbSet<Department_Expense> Department_Expense { get; set; }
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
     }
 }

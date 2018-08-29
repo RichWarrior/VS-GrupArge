@@ -28,10 +28,10 @@ namespace EntityApp2.Controllers
         }
         public ActionResult Edit(int id)
         {
-            return View(bll.Department().Listele().FirstOrDefault(x=>x.id==id));
+            return View(bll.Department().Listele().FirstOrDefault(x => x.id == id));
         }
         [HttpPost]
-        public ActionResult Edit(int id,LogicLayer.Entities.Department new_value)
+        public ActionResult Edit(int id, LogicLayer.Entities.Department new_value)
         {
             var isOk = bll.Department().Güncelle(id, new_value);
             if (isOk)
@@ -41,13 +41,27 @@ namespace EntityApp2.Controllers
         }
         public ActionResult Delete(int id)
         {
-            return View(bll.Department().Listele().FirstOrDefault(x=>x.id == id));
+            return View(bll.Department().Listele().FirstOrDefault(x => x.id == id));
         }
         [HttpPost]
-        public ActionResult Delete(int id,LogicLayer.Entities.Department value)
+        public ActionResult Delete(int id, LogicLayer.Entities.Department value)
         {
             var isOk = bll.Department().Sil(id);
             return RedirectToAction("Index");
+        }
+        public ActionResult Detail(int id)
+        {
+            var result = new List<Models.Employee_Model>();
+            foreach (var item in bll.Employee().Listele().Where(x=>x.departman_id == id))
+            {
+                result.Add(new Models.Employee_Model
+                {
+                    name = item.name_surname,
+                    phone_number = item.phone_number,
+                    departman = item.Department.name
+                });
+            }
+            return View(result);
         }
     }
 }

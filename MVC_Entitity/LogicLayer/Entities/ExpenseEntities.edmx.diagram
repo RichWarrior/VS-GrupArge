@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="GiderModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="GiderModel.FK_Department_Expense_department" ManuallyRouted="false" />
         <AssociationConnector Association="GiderModel.FK_Department_Expense_Expense" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GiderModel.Employee" Width="1.5" PointX="3" PointY="7" />
+        <AssociationConnector Association="GiderModel.FK_Employee_Department" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

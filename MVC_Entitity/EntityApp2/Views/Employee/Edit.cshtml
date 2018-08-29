@@ -1,0 +1,46 @@
+﻿@model EntityApp2.ViewModel.EmployeeCreate
+
+@{
+    ViewBag.Title = "Çalışan Düzenle";
+}
+
+<h2>Çalışan Düzenle</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+	<form action="Edit" method="post">
+		@Html.LabelFor(model => model.employee.name, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="text" name="name" value="@Model.employee.name" class="form-control"><br>
+		@Html.LabelFor(model => model.employee.phone_number, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="number" name="phone_number" value="@Model.employee.phone_number" class="form-control"><br>
+		@Html.LabelFor(model => model.employee.departman, htmlAttributes: new { @class = "control-label col-md-2" })
+		<select name="departman" class="form-control">
+			@foreach (var item in Model.departments)
+			{
+				if (item.name == Model.employee.departman)
+				{
+					<option value="@item.name" selected="selected">@item.name</option>
+				}
+				else
+				{
+					<option value="@item.name">@item.name</option>
+
+				}
+			}
+		</select>
+		<input type="submit" value="Düzenle" class="btn btn-default" style="margin-top:25px">
+	</form>
+</div>
+}
+
+<div style="margin-top:10px">
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

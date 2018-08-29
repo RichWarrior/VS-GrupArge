@@ -6,8 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+	@Styles.Render("~/Content/NavBar.css")
 </head>
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -20,9 +22,14 @@
             </div>
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
-					<li>@Html.ActionLink("Departmanlar", "Index", "Department")</li>
-					<li>@Html.ActionLink("Giderler", "Index", "Expense")</li>
+					<div class="dropdown">
+						<button class="dropbtn">Yönetim</button>
+						<div class="dropdown-content">
+							<li>@Html.ActionLink("Departmanlar", "Index", "Department")</li>
+							<li>@Html.ActionLink("Giderler", "Index", "Expense")</li>
+							<li>@Html.ActionLink("Çalışanlar", "Index", "Employee")</li>
+						</div>
+					</div>					
 				</ul>
             </div>
         </div>

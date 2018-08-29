@@ -11,7 +11,8 @@ namespace LogicLayer.Entities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Expense
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace LogicLayer.Entities
         }
     
         public int id { get; set; }
+        [Display(Name ="Açýklama")]
         public string description { get; set; }
+        [Display(Name = "Tutar")]
         public Nullable<int> price { get; set; }
+        [Display(Name = "Tarih")]
         public Nullable<System.DateTime> date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

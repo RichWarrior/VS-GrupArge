@@ -52,11 +52,15 @@
     <Compile Include="BLL.cs" />
     <Compile Include="DLL\Base.cs" />
     <Compile Include="DLL\Department.cs" />
+    <Compile Include="DLL\Employee.cs" />
     <Compile Include="DLL\Expense.cs" />
     <Compile Include="Entities\Department.cs">
       <DependentUpon>ExpenseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Department_Expense.cs">
+      <DependentUpon>ExpenseEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Employee.cs">
       <DependentUpon>ExpenseEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Expense.cs">

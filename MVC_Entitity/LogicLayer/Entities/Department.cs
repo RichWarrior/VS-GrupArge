@@ -19,6 +19,7 @@ namespace LogicLayer.Entities
         public Department()
         {
             this.Department_Expense = new HashSet<Department_Expense>();
+            this.Employee = new HashSet<Employee>();
         }
     
         public int id { get; set; }
@@ -27,5 +28,7 @@ namespace LogicLayer.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Department_Expense> Department_Expense { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model EntityApp2.ViewModel.EmployeeCreate
+
+@{
+    ViewBag.Title = "Yeni Çalışan Ekle";
+}
+
+<h2>Yeni Çalışan Ekle</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+	<form action="Create" method="get">
+		@Html.LabelFor(model => model.employee.name, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="text" name="name" class="form-control"><br>
+		@Html.LabelFor(model => model.employee.phone_number, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="number" name="phone_number" class="form-control"><br>
+		@Html.LabelFor(model => model.employee.departman, htmlAttributes: new { @class = "control-label col-md-2" })
+		<select name="departman" class="form-control">
+			@foreach (var item in Model.departments)
+			{
+				<option value="@item.id">@item.name </option>
+			}
+		</select>
+		<input type="submit" value="Kaydet" class="btn btn-default" style="margin-top:25px">
+	</form>
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

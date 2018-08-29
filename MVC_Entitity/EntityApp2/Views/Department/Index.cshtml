@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LogicLayer.Entities.Department>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Departmanlar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,7 +25,7 @@
         </td>
         <td>
             @Html.ActionLink("Düzenle", "Edit", new {id=item.id }) |
-            @Html.ActionLink("Detay", "Details", new { id = item.id }) |
+            @Html.ActionLink("Detay", "Detail", new { id=item.id}) |
             @Html.ActionLink("Sil", "Delete", new { id = item.id })
         </td>
     </tr>

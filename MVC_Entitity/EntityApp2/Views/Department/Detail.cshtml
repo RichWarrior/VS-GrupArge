@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EntityApp2.Models.Employee_Model>
+
+@{
+    ViewBag.Title = "Departman Çalışanları";
+}
+
+<h2>Departman Çalışanları</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departman)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departman)
+        </td>
+    </tr>
+}
+
+</table>
