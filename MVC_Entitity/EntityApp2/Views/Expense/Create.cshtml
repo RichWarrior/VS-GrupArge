@@ -1,0 +1,42 @@
+﻿@model EntityApp2.ViewModel.ExpenseCreate
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top:35px">Gider Oluştur</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<form action="Create" method="get">
+		@Html.LabelFor(model => model.expense.price, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="number" name="price" class="form-control"><br>
+		@Html.LabelFor(model => model.expense.description, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="text" name="description" class="form-control"><br>
+		@Html.LabelFor(model => model.expense.date, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="datetime-local" name="date" class="form-control" /><br />
+		@Html.LabelFor(model => model.expense.departmant, htmlAttributes: new { @class = "control-label col-md-2" })
+		<select name="departmant" class="form-control">
+			@foreach (var item in Model.departments)
+			{
+				<option value="@item.name">@item.name </option>
+			}
+		</select>
+		<input type="submit" value="Kaydet" class="btn btn-default" style="margin-top:25px">
+	</form>
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

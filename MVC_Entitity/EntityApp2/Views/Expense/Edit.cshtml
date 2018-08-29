@@ -1,0 +1,48 @@
+﻿@model EntityApp2.ViewModel.ExpenseCreate
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gider Düzenle</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+	<form action="Create" method="get">
+		@Html.LabelFor(model => model.expense.price, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="number" name="price" value="@Model.expense.price" class="form-control"><br>
+		@Html.LabelFor(model => model.expense.description, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="text" name="description"  value="@Model.expense.description" class="form-control"><br>
+		@Html.LabelFor(model => model.expense.date, htmlAttributes: new { @class = "control-label col-md-2" })
+		<input type="datetime" name="date"  value="@Model.expense.date" class="form-control" /><br />
+		@Html.LabelFor(model => model.expense.departmant, htmlAttributes: new { @class = "control-label col-md-2" })
+		<select name="departmant" class="form-control">
+			@foreach (var item in Model.departments)
+			{
+				if (item.name == Model.expense.departmant)
+				{
+					<option value="@item.name" selected="selected">@item.name</option> 
+				}
+				else
+				{
+										<option value="@item.name">@item.name</option> 
+
+				}
+			}
+		</select>
+		<input type="submit" value="Düzenle" class="btn btn-default">
+	</form>
+	</div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
